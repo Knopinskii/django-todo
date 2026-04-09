@@ -26,10 +26,10 @@ export function LoginPage({ onLogin }: Props) {
         const data = await res.json();
         onLogin(data.token);
       } else {
-        setError("Неверный логин или пароль");
+        setError("Invalid username or password");
       }
     } catch {
-      setError("Не удалось подключиться к серверу");
+      setError("Could not connect to the server");
     } finally {
       setLoading(false);
     }
@@ -39,14 +39,14 @@ export function LoginPage({ onLogin }: Props) {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-gray-900">Войти</h1>
-          <p className="text-gray-400 mt-1 text-sm">Введи данные чтобы продолжить</p>
+          <h1 className="text-3xl font-bold text-gray-900">Sign in</h1>
+          <p className="text-gray-400 mt-1 text-sm">Enter your credentials to continue</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Логин
+              Username
             </label>
             <input
               type="text"
@@ -60,7 +60,7 @@ export function LoginPage({ onLogin }: Props) {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">
-              Пароль
+              Password
             </label>
             <input
               type="password"
@@ -81,7 +81,7 @@ export function LoginPage({ onLogin }: Props) {
             disabled={loading}
             className="w-full py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-xl hover:bg-indigo-700 active:scale-95 transition-all disabled:opacity-50"
           >
-            {loading ? "Вход..." : "Войти"}
+            {loading ? "Signing in..." : "Sign in"}
           </button>
         </form>
       </div>

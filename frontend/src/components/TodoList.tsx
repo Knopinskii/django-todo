@@ -11,7 +11,7 @@ interface Props {
 
 export function TodoList({ todos, loading, error, onToggle, onDelete }: Props) {
   if (loading) {
-    return <div className="text-center text-gray-400 text-sm py-10">Загрузка...</div>;
+    return <div className="text-center text-gray-400 text-sm py-10">Loading...</div>;
   }
 
   if (error) {
@@ -21,7 +21,7 @@ export function TodoList({ todos, loading, error, onToggle, onDelete }: Props) {
   if (todos.length === 0) {
     return (
       <div className="text-center text-gray-400 text-sm py-10">
-        Задач пока нет. Добавь первую!
+        No tasks yet. Add your first one!
       </div>
     );
   }
@@ -38,7 +38,7 @@ export function TodoList({ todos, loading, error, onToggle, onDelete }: Props) {
       {pending.length > 0 && done.length > 0 && (
         <div className="flex items-center gap-2 py-2">
           <div className="flex-1 h-px bg-gray-200" />
-          <span className="text-xs text-gray-400">выполнено</span>
+          <span className="text-xs text-gray-400">completed</span>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
       )}

@@ -36,7 +36,7 @@ function App() {
         setLoading(false);
       })
       .catch(() => {
-        setError("Не удалось загрузить задачи");
+        setError("Failed to load todos");
         setLoading(false);
       });
   }, []);
@@ -87,16 +87,16 @@ function App() {
       <div className="w-full max-w-lg">
         <div className="mb-8 flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Мои задачи</h1>
+            <h1 className="text-3xl font-bold text-gray-900">My Tasks</h1>
             <p className="text-gray-400 mt-1 text-sm">
-              {pending.length} осталось · {done.length} выполнено
+              {pending.length} remaining · {done.length} completed
             </p>
           </div>
           <button
             onClick={handleLogout}
             className="text-sm text-gray-400 hover:text-gray-600 transition-colors mt-1"
           >
-            Выйти
+            Log out
           </button>
         </div>
 
