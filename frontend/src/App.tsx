@@ -4,7 +4,7 @@ import { TodoInput } from "./components/TodoInput";
 import { TodoList } from "./components/TodoList";
 import { LoginPage } from "./components/LoginPage";
 
-const API_URL = "http://localhost:8000/todos/";
+const API_URL = "http://localhost:8001/todos/";
 
 function App() {
   const [token, setToken] = useState<string | null>(
@@ -26,9 +26,9 @@ function App() {
     setTodos([]);
   };
 
-  if (!token) return <LoginPage onLogin={handleLogin} />;
-
   useEffect(() => {
+    if (!token) return;
+    setLoading(true);
     fetch(API_URL, { headers: { Authorization: `Token ${token}` } })
       .then((r) => r.json())
       .then((data) => {
@@ -39,7 +39,9 @@ function App() {
         setError("Failed to load todos");
         setLoading(false);
       });
-  }, []);
+  }, [token]);
+
+  if (!token) return <LoginPage onLogin={handleLogin} />;
 
   const addTodo = async () => {
     const title = input.trim();
