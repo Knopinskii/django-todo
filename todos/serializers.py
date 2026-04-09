@@ -3,10 +3,11 @@ from django.contrib.auth.models import User
 from todos.models import Todo
 
 class TodoSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source="owner.username")
+
     class Meta:
         model = Todo
         fields = ['id', 'created', 'title', 'done', 'owner']
-        owner = serializers.ReadOnlyField(source="owner.username")
 
 
 class UserSerializer(serializers.ModelSerializer):
